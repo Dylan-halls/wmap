@@ -21,8 +21,14 @@ class Wmap(object):
     def start(self):
         """Start the scan."""
         # to scan with ssl pass 1 insted of 0 to the function.
-        self.urls = dirscanner.scan(self.target, 0)
-        print(self.urls)
+        ssl = 0
+        self.urls = []
+        with open("wordlists/directorys/common.txt", "r") as file:
+            for line in file.read().splitlines():
+                if ssl == 0:
+                    url = "http://"+self.target+"/"+line
+                self.urls.append(dirscanner.scan(url, ssl))
+        # print(self.urls)
 
 
 if __name__ == '__main__':
