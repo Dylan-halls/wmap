@@ -55,9 +55,11 @@ static PyObject* scan(PyObject *self, PyObject *args) {
     */
     http_status = doscan();
     PyDict_SetItem(python_dict, Py_BuildValue("s", target), Py_BuildValue("i", http_status));
+    /*
     if (http_status != 404) {
-      printf("[%ld] %s\n", http_status, target);
+      printf("\r[%ld] %s\n", http_status, target);
     }
+    */
 
     fclose(fp);
 
